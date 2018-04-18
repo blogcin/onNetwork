@@ -1,5 +1,7 @@
 package xyz.miffle.onnetwork;
 
+import com.google.gson.Gson;
+import xyz.miffle.onnetwork.broadcast.BroadCastData;
 import xyz.miffle.onnetwork.network.NetworkProp;
 
 import java.io.IOException;
@@ -25,8 +27,6 @@ public class NetworkEngine {
         public BroadCastReceiveThread(OnNetworkImpl impl) throws SocketException {
             this.callback = impl;
             this.datagramSocket = new DatagramSocket(BROADCAST_PORT);
-            this.buf = new byte[65535];
-            this.datagramPacket = new DatagramPacket(buf, buf.length);
         }
 
         @Override
@@ -41,13 +41,27 @@ public class NetworkEngine {
 
         @Override
         public void run() {
+            Gson gson = new Gson();
+
             try {
                 try {
                     while (running.get()) {
+                        this.buf = new byte[65535];
+                        this.datagramPacket = new DatagramPacket(buf, buf.length);
+
                         datagramSocket.receive(datagramPacket);
 
                         if (callback != null) {
-                            callback.onBroadCastReceived(datagramPacket.getData());
+                            byte[] data = datagramPacket.getData();
+
+                            if (data != null && data.length > 0) {
+                                System.out.println(new String(data).trim());
+                                BroadCastData broadCastData = gson.fromJson(new String(data).trim(), BroadCastData.class);
+
+                                if (broadCastData != null) {
+                                    callback.onBroadCastReceived(broadCastData);
+                                }
+                            }
                         }
                     }
                 } catch (SocketException e) {
