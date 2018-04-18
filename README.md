@@ -2,7 +2,7 @@
 
 Java based socket broadcast library
 
-##How to use?
+## How to use?
 
 Add it in your root build.gradle at the end of repositories:
 
@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-##Example Code
+## Example Code
 ```
 OnNetwork onNetwork = OnNetwork.generate();
 onNetwork.receiveBroadCastStart(new OnNetworkImpl() {
