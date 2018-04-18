@@ -10,8 +10,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NetworkEngine {
 
-    private static NetworkEngine instance;
-    private static final Object instanceLock = new Object();
+	private static class NetworkWrapper {
+		static NetworkEngine instance = new NetworkEngine();
+	}
 
     private static final int BROADCAST_PORT = 5766;
 
@@ -142,12 +143,6 @@ public class NetworkEngine {
     }
 
     protected static NetworkEngine getInstance() {
-        if (instance == null) {
-            synchronized (instanceLock) {
-                instance = new NetworkEngine();
-            }
-        }
-
-        return instance;
+        return NetworkWrapper.instance;
     }
 }
