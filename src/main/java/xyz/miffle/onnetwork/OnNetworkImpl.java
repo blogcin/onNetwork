@@ -1,7 +1,9 @@
 package xyz.miffle.onnetwork;
 
+import xyz.miffle.onnetwork.broadcast.BroadCastData;
+
 public interface OnNetworkImpl {
 
-    void onBroadCastReceived(byte[] data);
+    void onBroadCastReceived(BroadCastData data);
 
 }

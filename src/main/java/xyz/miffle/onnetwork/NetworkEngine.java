@@ -55,7 +55,6 @@ public class NetworkEngine {
                             byte[] data = datagramPacket.getData();
 
                             if (data != null && data.length > 0) {
-                                System.out.println(new String(data).trim());
                                 BroadCastData broadCastData = gson.fromJson(new String(data).trim(), BroadCastData.class);
 
                                 if (broadCastData != null) {

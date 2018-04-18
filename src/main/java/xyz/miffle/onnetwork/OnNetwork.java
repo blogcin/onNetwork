@@ -40,29 +40,4 @@ public class OnNetwork {
         networkEngine.listenBroadCastStop();
     }
 
-    /*
-    public static void main(String[] args) {
-        OnNetwork onNetwork = OnNetwork.generate();
-        NetworkEngine.getInstance().listenBroadCastStart(new OnNetworkImpl() {
-            @Override
-            public void onBroadCastReceived(byte[] data) {
-                System.out.println("Received : " + new String(data));
-            }
-        });
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                NetworkEngine.getInstance().listenBroadCastStop();
-            }
-        }).start();
-
-        onNetwork.sendBroadCast(NetworkProp.getInstance().getAdaptersAddress(), "Hello!", "This is message");
-    }*/
-
 }
