@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/onNetwork.iml" filepath="$PROJECT_DIR$/.idea/modules/onNetwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/onNetwork_main.iml" filepath="$PROJECT_DIR$/.idea/modules/onNetwork_main.iml" group="onNetwork" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/onNetwork_test.iml" filepath="$PROJECT_DIR$/.idea/modules/onNetwork_test.iml" group="onNetwork" />
+    </modules>
+  </component>
+</project>
