@@ -10,8 +10,9 @@ import java.util.regex.Pattern;
 
 public class NetworkProp {
 
-    private static NetworkProp instance;
-    private static final Object instanceLock = new Object();
+    private static class NetworkPropWrapper {
+		static NetworkProp instance = new NetworkProp();
+	}
 
     private static final Pattern IP_MATCHING_PATTERN = Pattern.compile(
             "^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
@@ -57,13 +58,7 @@ public class NetworkProp {
     }
 
     public static NetworkProp getInstance() {
-        if (instance == null) {
-            synchronized (instanceLock) {
-                instance = new NetworkProp();
-            }
-        }
-
-        return instance;
+        return NetworkPropWrapper.instance;
     }
 
 
