@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NetworkEngine {
 
-	private static class NetworkWrapper {
+	private static class NetworkEngineWrapper {
 		static NetworkEngine instance = new NetworkEngine();
 	}
 
@@ -143,6 +143,6 @@ public class NetworkEngine {
     }
 
     protected static NetworkEngine getInstance() {
-        return NetworkWrapper.instance;
+        return NetworkEngineWrapper.instance;
     }
 }
